@@ -5,12 +5,9 @@ import App from "../client/App";
 
 const router = express.Router();
 
-const { NODE_ENV } = process.env;
-const ejsPath = NODE_ENV === "develpment" ? "index" : "../dist/index";
-
 router.get("*", (req, res) => {
   const reactApp = renderToString(<App />);
-  res.status(200).render(ejsPath, {
+  res.status(200).render("index", {
     reactApp,
   });
 });

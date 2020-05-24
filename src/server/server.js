@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
-const fs = require("fs");
+import fs from "fs";
 import defaultHandler from "./defaultHandler";
 
 const app = express();
@@ -55,10 +55,11 @@ if (process.env.NODE_ENV === "development") {
   for (const k in envConfig) {
     process.env[k] = envConfig[k];
   }
-
+  app.set("views", path.join(__dirname));
   app.set("view engine", "ejs");
 }
-app.use(express.static(__dirname));
+console.log("sfdsf", path.join(__dirname, "./dist"));
+app.use("/", express.static(path.join(__dirname)));
 app.use("/", defaultHandler);
 
 const port = process.env.PORT || 3005;

@@ -6,10 +6,13 @@ module.exports = {
   entry: path.resolve(__dirname, "..", "src/server/index.js"),
   output: {
     path: path.resolve(__dirname, "..", "dist"),
-    publicPath: "/dist/",
+    publicPath: "/",
     filename: "server.js",
     library: "app",
     libraryTarget: "commonjs2",
+  },
+  node: {
+    __dirname: false,
   },
   mode: "production",
   module: {
@@ -26,7 +29,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        loader: "css-loader/locals",
+        use: ["css-loader", "postcss-loader", "sass-loader"],
       },
       {
         test: /\.(ttf|eot|otf|svg|png)$/,

@@ -1,0 +1,3 @@
+dist
+.env.development
+.env.production
