@@ -8,11 +8,15 @@ const Dotenv = require("dotenv-webpack");
 const common = require("./webpack.common");
 
 const config = {
-  mode: "production",
+  entry: {
+    vendor: ["react"],
+    index: path.resolve(__dirname, "../src", "client/index.js"),
+  },
   output: {
     path: path.resolve(__dirname, "../", "dist"),
     filename: "js/[hash].[name].js",
   },
+  mode: "production",
   module: {
     rules: [
       {

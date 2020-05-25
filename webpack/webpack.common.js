@@ -1,9 +1,5 @@
 const path = require("path");
 const config = {
-  entry: {
-    vendor: ["react"],
-    index: path.resolve(__dirname, "../src", "client/index.js"),
-  },
   module: {
     rules: [
       {
