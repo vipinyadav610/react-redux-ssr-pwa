@@ -40,7 +40,10 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new workboxPlugin.GenerateSW(),
+    new workboxPlugin.InjectManifest({
+      swSrc: path.resolve(__dirname, "../src", "client/sw.js"),
+      swDest: "service-worker.js",
+    }),
     new HtmlWebpackPlugin({
       filename: `./index.ejs`,
       template: path.join("public", "template.ejs"),
@@ -60,6 +63,8 @@ const config = {
       meta: {
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
         "theme-color": "#000000",
+        "msapplication-navbutton-color": "#000000",
+        "apple-mobile-web-app-status-bar-style": "#000000",
       },
     }),
     new MiniCssExtractPlugin({
@@ -73,20 +78,6 @@ const config = {
       systemvars: true,
       silent: true,
       defaults: false,
-    }),
-    new ManifestPlugin({
-      fileName: "asset-manifest.json",
-      publicPath: "./",
-      generate: (seed, files) => {
-        const manifestFiles = files.reduce(function (manifest, file) {
-          manifest[file.name] = file.path;
-          return manifest;
-        }, seed);
-
-        return {
-          files: manifestFiles,
-        };
-      },
     }),
   ],
 };
