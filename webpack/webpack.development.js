@@ -8,6 +8,12 @@ const Dotenv = require("dotenv-webpack");
 const common = require("./webpack.common");
 
 const config = {
+  entry: [
+    "babel-polyfill",
+    "react-hot-loader/patch",
+    "webpack-hot-middleware/client",
+    path.resolve(__dirname, "../src", "client/index.js"),
+  ],
   output: {
     path: path.resolve(__dirname, "../", "dist"),
     filename: "js/index.js",
