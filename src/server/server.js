@@ -58,7 +58,7 @@ if (process.env.NODE_ENV === "development") {
   app.set("views", path.join(__dirname));
   app.set("view engine", "ejs");
 }
-console.log("sfdsf", path.join(__dirname, "./dist"));
+
 app.use("/", express.static(path.join(__dirname)));
 app.use("/", defaultHandler);
 
