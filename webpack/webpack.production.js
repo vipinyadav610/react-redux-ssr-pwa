@@ -2,8 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 const Dotenv = require("dotenv-webpack");
+const workboxPlugin = require("workbox-webpack-plugin");
 
 const common = require("./webpack.common");
 
@@ -37,6 +39,8 @@ const config = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new workboxPlugin.GenerateSW(),
     new HtmlWebpackPlugin({
       filename: `./index.ejs`,
       template: path.join("public", "template.ejs"),
