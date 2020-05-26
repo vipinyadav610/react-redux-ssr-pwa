@@ -19,7 +19,7 @@ class FetchBase {
 
   // this will construct the API url
   constructUrl(url) {
-    return "http://hn.algolia.com/api/v1" + url;
+    return "https://hn.algolia.com/api/v1" + url;
   }
 
   get(url, data) {
