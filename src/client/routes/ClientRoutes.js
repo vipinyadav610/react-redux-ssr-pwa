@@ -7,7 +7,8 @@ import Feeds from "../pages/Feeds";
 function ClientRoutes({ location }) {
   return (
     <Switch>
-      <Route exact path="/feeds/:pageno" component={Feeds} />
+      <Route exact path="/" component={Feeds} />
+      <Route path="/feeds/:pageno" component={Feeds} />
     </Switch>
   );
 }

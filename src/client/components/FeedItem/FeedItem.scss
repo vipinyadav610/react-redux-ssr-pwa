@@ -3,11 +3,32 @@
   .feed-item-element-wrapper {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    align-content: center;
+    align-items: flex-end;
+    align-content: flex-end;
     padding: 10px;
+
     .feed-wrapper-item {
       margin-right: 5px;
+      color: #828282;
+      .label-black {
+        color: black;
+      }
+      &.label-black {
+        color: black;
+      }
+      a {
+        color: #828282;
+        text-decoration: none; /* no underline */
+      }
+      &.feed-item-points {
+        margin-right: 15px;
+      }
+      &.feed-item-small-font {
+        font-size: 10px;
+      }
+      &.btn-hide {
+        cursor: pointer;
+      }
     }
     .upvote-image {
       cursor: pointer;

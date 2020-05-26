@@ -8,7 +8,11 @@ function Layout(props) {
   return (
     <div className="layout-main-container">
       <header className="main-header">
-        <img src="https://news.ycombinator.com/y18.gif" alt="Hacker News" />
+        <img
+          className="logo"
+          src="https://news.ycombinator.com/y18.gif"
+          alt="Hacker News"
+        />
         <button className="navigation-button">top</button>
         <button className="navigation-button">new</button>
       </header>
