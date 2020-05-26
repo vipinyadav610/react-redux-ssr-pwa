@@ -2,9 +2,11 @@ import dotenv from "dotenv";
 import express from "express";
 import path from "path";
 import fs from "fs";
+import cors from "cors";
 import defaultHandler from "./defaultHandler";
 
 const app = express();
+app.use(cors());
 let envConfig = {};
 if (process.env.NODE_ENV === "development") {
   if (fs.existsSync(".env.development")) {

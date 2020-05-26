@@ -25,7 +25,6 @@ class FetchBase {
   get(url, data) {
     return fetch(this.constructUrl(url) + this.serialize(data), {
       method: "GET",
-      headers: this.jsonHeaders,
     }).then((response) => response.json());
   }
 }

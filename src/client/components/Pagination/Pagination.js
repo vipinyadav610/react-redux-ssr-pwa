@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Pagination.scss";
 
@@ -34,12 +34,12 @@ function Pagination({ totalPages, currentPage }) {
       <nav className="pagination-navigation" aria-label="Feeds Pagination">
         <ul className="pagination">
           <li className="page-item">
-            <NavLink
+            <Link
               className="page-link"
               to={`/feeds/${currentPage === 1 ? 1 : currentPage - 1}`}
             >
               Previous
-            </NavLink>
+            </Link>
             {constructPages().map((page) => {
               return (
                 <NavLink className="page-link" key={page} to={`/feeds/${page}`}>
@@ -47,14 +47,14 @@ function Pagination({ totalPages, currentPage }) {
                 </NavLink>
               );
             })}
-            <NavLink
+            <Link
               className="page-link"
               to={`/feeds/${
                 currentPage === totalPages ? totalPages : totalPages + 1
               }`}
             >
               Next
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </nav>

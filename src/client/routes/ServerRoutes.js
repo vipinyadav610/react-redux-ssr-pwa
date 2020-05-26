@@ -5,8 +5,12 @@ const routes = [
     component: Layout,
     routes: [
       {
-        path: "/feeds/:pageno",
+        path: "/",
         exact: true,
+        component: Feeds,
+      },
+      {
+        path: "/feeds/:pageno",
         component: Feeds,
       },
     ],
