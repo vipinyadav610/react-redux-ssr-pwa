@@ -1,5 +1,6 @@
 import express from "express";
 import React from "react";
+import qs from "qs";
 import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
 import { ConnectedRouter, push } from "connected-react-router";
@@ -20,7 +21,7 @@ const initialRoutesApi = (location, store) => {
     if (route.component) {
       return route.component.loadData
         ? // the following will be passed into each component's `loadData` method:
-          route.component.loadData(store, match, location)
+          route.component.loadData(store, match)
         : Promise.resolve(null);
     }
     // @TODO: return 404
@@ -33,7 +34,7 @@ const initialRoutesApi = (location, store) => {
 router.get("*", (req, res) => {
   const { store, history } = configureStore({}, true);
   store.dispatch(push(req.originalUrl));
-  initialRoutesApi(req.originalUrl, store).then((data) => {
+  initialRoutesApi(req.url, store).then((data) => {
     const reactApp = renderToString(
       <Provider store={store}>
         <ConnectedRouter history={history}>
@@ -41,6 +42,7 @@ router.get("*", (req, res) => {
         </ConnectedRouter>
       </Provider>
     );
+    console.log("hello", reactApp);
     const preloadedState = store.getState();
 
     res.status(200).render("index", {

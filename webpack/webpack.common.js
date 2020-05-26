@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 const config = {
   module: {
     rules: [
@@ -18,6 +19,13 @@ const config = {
       },
     ],
   },
+  plugins: [
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: path.resolve(__dirname, "../public/images"), to: "images" },
+    //   ],
+    // }),
+  ],
   resolve: {
     extensions: [".js", ".jsx", ".json", ".wasm", ".mjs", "*"],
   },

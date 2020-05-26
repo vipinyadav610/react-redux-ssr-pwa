@@ -17,6 +17,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, "../", "dist"),
     filename: "js/index.js",
+    publicPath: "/",
   },
   mode: "development",
   module: {
@@ -36,10 +37,18 @@ const config = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          publicPath: path.resolve(__dirname, "../", "public"),
+          outputPath: "images",
+        },
+      },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": {

@@ -5,15 +5,15 @@ import {
 } from "../constants/Feeds";
 import Service from "../api/FetchBase";
 
-export const fetchFeeds = () => (dispatch) => {
+export const fetchFeeds = (page = 1) => (dispatch) => {
   dispatch({
     type: GET_FEEDS_REQUEST,
   });
-  return Service.get("/todos")
+  return Service.get("/search", { page: 1 })
     .then((result) => {
       dispatch({
         type: GET_FEEDS_SUCCESS,
-        payload: result,
+        payload: [result],
       });
     })
     .catch((err) => {
