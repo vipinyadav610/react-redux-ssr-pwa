@@ -1,0 +1,21 @@
+.layout-main-container {
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  .main-header {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ff6600;
+    .navigation-button {
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-right: 1px solid;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}

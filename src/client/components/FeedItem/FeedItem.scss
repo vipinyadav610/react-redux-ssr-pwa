@@ -1,0 +1,16 @@
+.feed-item-container {
+  background-color: #f6f6ef;
+  .feed-item-element-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    padding: 10px;
+    .feed-wrapper-item {
+      margin-right: 5px;
+    }
+    .upvote-image {
+      cursor: pointer;
+    }
+  }
+}

@@ -36,6 +36,14 @@ const config = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          publicPath: path.resolve(__dirname, "../", "public/images"),
+          outputPath: "images",
+        },
+      },
     ],
   },
   plugins: [
