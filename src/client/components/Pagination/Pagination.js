@@ -3,27 +3,33 @@ import { NavLink, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Pagination.scss";
 
-function Pagination({ totalPages, currentPage }) {
+function Pagination({ totalPages, currentPage, pageNeighbours = 1 }) {
   const constructPages = () => {
-    var startPage, endPage;
-    if (totalPages <= 10) {
-      // less than 10 total pages so show all
+    let startPage, endPage;
+    if (2 * pageNeighbours + 1 >= totalPages) {
       startPage = 1;
       endPage = totalPages;
     } else {
-      // more than 10 total pages so calculate start and end pages
-      if (currentPage <= 6) {
-        startPage = 1;
-        endPage = 10;
-      } else if (currentPage + 4 >= totalPages) {
-        startPage = totalPages - 9;
+      if (currentPage + pageNeighbours >= totalPages) {
         endPage = totalPages;
       } else {
-        startPage = currentPage - 5;
-        endPage = currentPage + 4;
+        endPage = currentPage + pageNeighbours;
+      }
+      if (currentPage - pageNeighbours <= 1) {
+        startPage = 1;
+      } else {
+        startPage = currentPage - pageNeighbours;
       }
     }
-    var pages = [...Array(endPage + 1 - startPage).keys()].map(
+    if (startPage === 1 && 2 * pageNeighbours + 1 <= totalPages) {
+      endPage = 2 * pageNeighbours + 1;
+    }
+    if (endPage === totalPages && currentPage - pageNeighbours >= 1) {
+      const startVal = totalPages - 2 * pageNeighbours;
+      startPage = startVal <= 1 ? 1 : startVal;
+    }
+
+    const pages = [...Array(endPage + 1 - startPage).keys()].map(
       (i) => startPage + i
     );
     return pages;

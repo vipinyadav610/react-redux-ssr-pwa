@@ -60,7 +60,8 @@ function Feeds(props) {
       {!!props.totalPages && (
         <Pagination
           totalPages={props.totalPages}
-          currentPage={!isNaN(pageno) ? pageno : 1}
+          pageNeighbours={3}
+          currentPage={!isNaN(pageno) ? Number(pageno) : 1}
         />
       )}
     </div>
