@@ -6,11 +6,11 @@ import {
 import Service from "../api/FetchBase";
 
 export const fetchFeeds = (page) => (dispatch) => {
-  const pageno = !isNaN(page) ? page : 1;
+  const pageno = !isNaN(page) ? Number(page) : 1;
   dispatch({
     type: GET_FEEDS_REQUEST,
   });
-  return Service.get("/search", { page: pageno })
+  return Service.get("/search", { page: pageno - 1 })
     .then((result) => {
       dispatch({
         type: GET_FEEDS_SUCCESS,
