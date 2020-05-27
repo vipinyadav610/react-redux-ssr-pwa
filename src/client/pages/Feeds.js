@@ -43,7 +43,7 @@ function Feeds(props) {
               return (
                 <FeedItem
                   handleHide={handleHide}
-                  key={title}
+                  key={objectID}
                   title={title}
                   num_comments={num_comments}
                   author={author}
