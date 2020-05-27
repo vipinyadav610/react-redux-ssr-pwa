@@ -3,8 +3,6 @@
   .feed-item-element-wrapper {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
-    align-content: flex-end;
     flex-wrap: wrap;
     padding: 10px;
     .feed-item-small-font {
@@ -13,6 +11,8 @@
     }
     .feed-wrapper-item-large-fonts {
       display: flex;
+      align-items: center;
+      align-content: center;
     }
     .feed-wrapper-item {
       margin-right: 5px;
