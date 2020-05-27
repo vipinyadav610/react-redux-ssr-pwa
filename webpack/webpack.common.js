@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 const config = {
   module: {
@@ -20,6 +21,7 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // new CopyPlugin({
     //   patterns: [
     //     { from: path.resolve(__dirname, "../public/images"), to: "images" },
