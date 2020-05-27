@@ -24,12 +24,12 @@ function Feeds(props) {
     setItem("hide-feeds", JSON.stringify([...hideFeeds, id]));
     setHide([...hideFeeds, id]);
   };
-
+  const feeds = props.feeds[!isNaN(pageno) ? Number(pageno) : 1] || [];
   return (
     <div>
       <Spinner loading={props.loading}>
         <div>
-          {props.feeds.map(
+          {feeds.map(
             ({
               title,
               num_comments,

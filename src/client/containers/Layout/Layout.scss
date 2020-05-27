@@ -11,10 +11,11 @@
     .logo {
       border: 1px solid white;
     }
-    .navigation-button {
+    .navigation-item {
+      padding: 5px;
       cursor: pointer;
       border: none;
-      background: transparent;
+      background: #ff6600;
       border-right: 1px solid;
       &:last-child {
         border: none;

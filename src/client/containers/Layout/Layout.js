@@ -13,8 +13,8 @@ function Layout(props) {
           src="https://news.ycombinator.com/y18.gif"
           alt="Hacker News"
         />
-        <button className="navigation-button">top</button>
-        <button className="navigation-button">new</button>
+        <div className="navigation-item">top</div>
+        <div className="navigation-item">new</div>
       </header>
       <ClientRoutes location={props.location} />
     </div>
