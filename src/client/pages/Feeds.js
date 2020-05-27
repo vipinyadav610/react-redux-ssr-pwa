@@ -57,7 +57,7 @@ function Feeds(props) {
           )}
         </div>
       </Spinner>
-      {!!props.totalPages && (
+      {!props.loading && !!props.totalPages && (
         <Pagination
           totalPages={props.totalPages}
           pageNeighbours={3}

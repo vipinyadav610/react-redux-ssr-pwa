@@ -5,8 +5,15 @@
     justify-content: flex-start;
     align-items: flex-end;
     align-content: flex-end;
+    flex-wrap: wrap;
     padding: 10px;
-
+    .feed-item-small-font {
+      display: flex;
+      font-size: 10px;
+    }
+    .feed-wrapper-item-large-fonts {
+      display: flex;
+    }
     .feed-wrapper-item {
       margin-right: 5px;
       color: #828282;
@@ -23,9 +30,7 @@
       &.feed-item-points {
         margin-right: 15px;
       }
-      &.feed-item-small-font {
-        font-size: 10px;
-      }
+
       &.btn-hide {
         cursor: pointer;
       }
@@ -33,5 +38,14 @@
     .upvote-image {
       cursor: pointer;
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .feed-wrapper-item-large-fonts {
+    min-width: 100%;
+  }
+  .feed-item-small-font {
+    margin-top: 10px;
   }
 }
