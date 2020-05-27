@@ -4,7 +4,7 @@ import {
   GET_FEEDS_FAILURE,
 } from "../constants/Feeds";
 export default function feeds(
-  state = { loading: false, feeds: {}, totalPages: 0, error: null },
+  state = { loading: false, feeds: [], totalPages: 0, error: null },
   action
 ) {
   switch (action.type) {
@@ -14,10 +14,7 @@ export default function feeds(
       return {
         ...state,
         totalPages: action.payload.nbPages,
-        feeds: {
-          ...state.feeds,
-          [action.pageno]: action.payload.hits.filter(({ title }) => title),
-        },
+        feeds: action.payload.hits.filter(({ title }) => title),
         loading: false,
       };
     case GET_FEEDS_FAILURE:
