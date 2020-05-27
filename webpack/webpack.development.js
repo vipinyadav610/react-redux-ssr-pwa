@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const merge = require("webpack-merge");
 const Dotenv = require("dotenv-webpack");
 
@@ -48,7 +49,8 @@ const config = {
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
+    new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
