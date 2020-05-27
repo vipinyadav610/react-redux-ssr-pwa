@@ -42,7 +42,6 @@ router.get("*", (req, res) => {
         </ConnectedRouter>
       </Provider>
     );
-    console.log("hello", reactApp);
     const preloadedState = store.getState();
 
     res.status(200).render("index", {
