@@ -56,7 +56,7 @@ function Pagination({ totalPages, currentPage, pageNeighbours = 1 }) {
             <Link
               className="page-link"
               to={`/feeds/${
-                currentPage === totalPages ? totalPages : totalPages + 1
+                currentPage === totalPages ? totalPages : currentPage + 1
               }`}
             >
               Next
