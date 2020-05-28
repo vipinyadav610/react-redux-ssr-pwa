@@ -81,7 +81,13 @@ const config = {
       name: "Hacker news",
       short_name: "HNews",
       description: "My awesome Progressive Web App!",
-      background_color: "#ff6600",
+      background_color: "#fff",
+      theme_color: "#ff6600",
+      ios: true,
+      ios: {
+        "apple-mobile-web-app-title": "Hacker news",
+        "apple-mobile-web-app-status-bar-style": "#ff6600",
+      },
       crossorigin: null,
       icons: [
         {
