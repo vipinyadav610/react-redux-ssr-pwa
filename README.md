@@ -54,4 +54,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Lighthouse perfomance
 
-![alt text](https://github.com/vipinyadav610/react-redux-ssr-pwa/lighthouse.jpg?raw=true)
+![alt text](https://github.com/vipinyadav610/react-redux-ssr-pwa/blob/feature/optimize-lighthouse-perfomance/lighthouse.jpg?raw=true)
