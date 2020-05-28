@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import cors from "cors";
+import compression from "compression";
 import defaultHandler from "./defaultHandler";
 
 const app = express();
@@ -23,6 +24,8 @@ if (process.env.NODE_ENV === "development") {
   const hotMiddleware = require("webpack-hot-middleware");
   const config = require("../../webpack/webpack.development");
   const compiler = webpack(config);
+
+  app.use(compression());
 
   app.use(
     hotMiddleware(compiler, {

@@ -39,11 +39,10 @@ const config = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(ttf|eot|otf|svg|png|jpe?g|gif)$/i,
         loader: "file-loader",
         options: {
-          publicPath: path.resolve(__dirname, "../", "public"),
-          outputPath: "images",
+          name: "images/[name].[ext]",
         },
       },
     ],
