@@ -40,7 +40,7 @@ function FeedItem({
         <div className="feed-item-small-font">
           {url && (
             <div className="feed-wrapper-item">
-              <a target="_blank" href={url}>
+              <a target="_blank" href={url} rel="noreferrer">
                 ({getBaseUrl(url)})
               </a>
             </div>

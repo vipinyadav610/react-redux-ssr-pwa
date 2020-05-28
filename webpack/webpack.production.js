@@ -2,6 +2,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 const Dotenv = require("dotenv-webpack");
@@ -75,6 +77,28 @@ const config = {
         "apple-mobile-web-app-status-bar-style": "#000000",
       },
     }),
+    new WebpackPwaManifest({
+      name: "Hacker news",
+      short_name: "HNews",
+      description: "My awesome Progressive Web App!",
+      background_color: "#ff6600",
+      crossorigin: null,
+      icons: [
+        {
+          src: path.resolve(__dirname, "../public/favicon.ico"),
+          sizes: [64, 32, 24, 16],
+        },
+        {
+          src: path.resolve(__dirname, "../public/logo192.png"),
+          size: "192x192",
+          ios: true,
+        },
+        {
+          src: path.resolve(__dirname, "../public/logo512.png"),
+          size: "1024x1024",
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[hash].css",
       chunkFilename: "css/[hash].css",
@@ -86,6 +110,13 @@ const config = {
       systemvars: true,
       silent: true,
       defaults: false,
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "../public", "robots.txt"),
+        },
+      ],
     }),
   ],
 };
