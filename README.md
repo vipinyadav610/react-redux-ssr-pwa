@@ -51,3 +51,7 @@ These instructions will get you a copy of the project up and running on your loc
 - [React App coding style](https://www.npmjs.com/package/eslint-config-react-app/)
 
 **_Note:_** It is absolutely compulsory to add a [pre-commit hook](https://prettier.io/docs/en/precommit.html) to your project in this manner.
+
+## Lighthouse perfomance
+
+![alt text](https://github.com/vipinyadav610/react-redux-ssr-pwa/lighthouse.jpg?raw=true)
