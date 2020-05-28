@@ -4,12 +4,11 @@ require("@babel/register")({
     [
       "file-loader",
       {
-        name: "[hash].[ext]",
+        name: "[name].[ext]",
         extensions: ["png", "jpg", "jpeg", "gif", "svg"],
-        publicPath: "/public/img",
+        publicPath: "/images",
         outputPath: null,
       },
-      "img-file-loader-plugin",
     ],
     [
       "babel-plugin-transform-require-ignore",

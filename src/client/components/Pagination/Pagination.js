@@ -48,7 +48,13 @@ function Pagination({ totalPages, currentPage, pageNeighbours = 1 }) {
             </Link>
             {constructPages().map((page) => {
               return (
-                <NavLink className="page-link" key={page} to={`/feeds/${page}`}>
+                <NavLink
+                  className={`page-link ${
+                    currentPage === page ? "active" : ""
+                  }`}
+                  key={page}
+                  to={`/feeds/${page}`}
+                >
                   {page}
                 </NavLink>
               );
