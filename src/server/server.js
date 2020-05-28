@@ -62,12 +62,6 @@ if (process.env.NODE_ENV === "development") {
   }
   app.set("views", path.join(__dirname));
   app.set("view engine", "ejs");
-  app.use(function (req, res, next) {
-    if (!req.secure) {
-      return res.redirect(["https://", req.get("Host"), req.url].join(""));
-    }
-    next();
-  });
 }
 
 app.use("/", express.static(path.join(__dirname)));
