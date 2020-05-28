@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { fetchFeeds } from "../redux/actions/Feeds";
 import Spinner from "../components/Spinner/Spinner";
 import FeedItem from "../components/FeedItem/FeedItem";
@@ -27,6 +28,10 @@ function Feeds(props) {
   // const feeds = props.feeds[!isNaN(pageno) ? Number(pageno) : 1] || [];
   return (
     <div>
+      <Helmet>
+        <title>Hacker news page </title>
+        <meta name="description" content="Hacker news list page" />
+      </Helmet>
       <Spinner loading={props.loading}>
         <div>
           {props.feeds.map(
