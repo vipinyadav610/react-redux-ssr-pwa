@@ -17,6 +17,13 @@
     .feed-wrapper-item {
       margin-right: 5px;
       color: #828282;
+      &.item-comments {
+        min-width: 30px;
+        text-align: right;
+      }
+      &.feed-item-points {
+        min-width: 55px;
+      }
       .label-black {
         color: black;
       }
@@ -27,16 +34,18 @@
         color: #828282;
         text-decoration: none; /* no underline */
       }
-      &.feed-item-points {
-        margin-right: 15px;
-      }
-
       &.btn-hide {
         cursor: pointer;
       }
     }
-    .upvote-image {
+    .upvote-icon {
+      height: 0;
+      width: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid #9a9a9a;
       cursor: pointer;
+      margin-right: 10px;
     }
   }
 }

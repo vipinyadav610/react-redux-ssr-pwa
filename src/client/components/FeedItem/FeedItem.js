@@ -21,20 +21,18 @@ function FeedItem({
   url,
   points,
   handleHide,
+  handleUpVotes,
+  votes,
 }) {
   return (
     <div className="feed-item-container">
       <div className="feed-item-element-wrapper">
         <div className="feed-wrapper-item-large-fonts">
           <div className="feed-wrapper-item feed-item-points label-black">
-            {points}
+            {points + votes}
           </div>
-          <div className="feed-wrapper-item">{num_comments}</div>
-          <img
-            className="feed-wrapper-item upvote-image"
-            src="https://news.ycombinator.com/grayarrow.gif"
-            alt="upvote"
-          />
+          <div className="feed-wrapper-item item-comments">{num_comments}</div>
+          <div className="upvote-icon" onClick={() => handleUpVotes(id)} />
           <div className="feed-wrapper-item label-black">{title}</div>
         </div>
         <div className="feed-item-small-font">
