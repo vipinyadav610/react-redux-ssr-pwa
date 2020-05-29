@@ -14,6 +14,9 @@ function Feeds(props) {
   const [hideArr, setHide] = useState(
     getItem("hide-feeds") ? JSON.parse(getItem("hide-feeds")) : []
   );
+  const [votes, setUpVotes] = useState(
+    getItem("votes-feeds") ? JSON.parse(getItem("votes-feeds")) : {}
+  );
   useEffect(() => {
     return props.fetchFeeds(pageno);
   }, [pageno]);
@@ -24,6 +27,18 @@ function Feeds(props) {
       : [];
     setItem("hide-feeds", JSON.stringify([...hideFeeds, id]));
     setHide([...hideFeeds, id]);
+  };
+  const handleUpVotes = (id) => {
+    let hideFeeds = getItem("votes-feeds")
+      ? JSON.parse(getItem("votes-feeds"))
+      : {};
+    if (hideFeeds[id]) {
+      hideFeeds[id] = hideFeeds[id] + 1;
+    } else {
+      hideFeeds[id] = 1;
+    }
+    setItem("votes-feeds", JSON.stringify(hideFeeds));
+    setUpVotes(hideFeeds);
   };
   // const feeds = props.feeds[!isNaN(pageno) ? Number(pageno) : 1] || [];
   return (
@@ -48,6 +63,8 @@ function Feeds(props) {
               return (
                 <FeedItem
                   handleHide={handleHide}
+                  handleUpVotes={handleUpVotes}
+                  votes={votes[objectID] || 0}
                   key={objectID}
                   title={title}
                   num_comments={num_comments}
