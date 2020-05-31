@@ -28,12 +28,12 @@ export function fetchFeedsFailure(error) {
 
 export const fetchFeeds = (page) => (dispatch, getState) => {
   const pageno = !isNaN(page) ? Number(page) : 1;
-  fetchFeedsRequest();
+  dispatch(fetchFeedsRequest());
   return Service.get("/search", { page: pageno - 1 })
     .then((result) => {
-      fetchFeedsSuccess(result, pageno);
+      dispatch(fetchFeedsSuccess(result, pageno));
     })
     .catch((err) => {
-      fetchFeedsFailure(err);
+      dispatch(fetchFeedsFailure(err));
     });
 };

@@ -1,6 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
-const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const postcssNormalize = require("postcss-normalize");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 const config = {
   module: {
     rules: [
@@ -15,6 +18,42 @@ const config = {
         exclude: [/node_modules/],
       },
       {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development",
+              publicPath: "/css",
+            },
+          },
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: () => [
+                require("postcss-flexbugs-fixes"),
+                require("postcss-preset-env")({
+                  autoprefixer: {
+                    flexbox: "no-2009",
+                  },
+                  stage: 3,
+                }),
+                postcssNormalize(),
+              ],
+            },
+          },
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.(ttf|eot|otf|svg|png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          name: "images/[name].[ext]",
+        },
+      },
+      {
         test: /\.ejs$/,
         loader: "raw-loader",
       },
@@ -22,11 +61,7 @@ const config = {
   },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: path.resolve(__dirname, "../public/images"), to: "images" },
-    //   ],
-    // }),
+    new CleanWebpackPlugin(),
   ],
   resolve: {
     extensions: [".js", ".jsx", ".json", ".wasm", ".mjs", "*"],

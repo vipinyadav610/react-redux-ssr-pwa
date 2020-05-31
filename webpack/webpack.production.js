@@ -21,35 +21,7 @@ const config = {
     filename: "js/[hash].[name].js",
   },
   mode: "production",
-  module: {
-    rules: [
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: false,
-              publicPath: "/css",
-            },
-          },
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
-      },
-
-      {
-        test: /\.(ttf|eot|otf|svg|png|jpe?g|gif)$/i,
-        loader: "file-loader",
-        options: {
-          name: "images/[name].[ext]",
-        },
-      },
-    ],
-  },
   plugins: [
-    new CleanWebpackPlugin(),
     new workboxPlugin.InjectManifest({
       swSrc: path.resolve(__dirname, "../src", "client/sw.js"),
       swDest: "service-worker.js",
