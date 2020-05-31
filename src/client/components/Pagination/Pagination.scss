@@ -8,6 +8,7 @@
       display: inline-block;
       padding: 9px 0px;
       &.pagination {
+        display: flex;
         margin-top: 0;
         margin-bottom: 0;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
