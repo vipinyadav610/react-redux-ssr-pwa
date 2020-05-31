@@ -5,23 +5,35 @@ import {
 } from "../constants/Feeds";
 import Service from "../api/FetchBase";
 
+export function fetchFeedsRequest() {
+  return {
+    type: GET_FEEDS_REQUEST,
+  };
+}
+
+export function fetchFeedsSuccess(payload, pageno) {
+  return {
+    type: GET_FEEDS_SUCCESS,
+    payload,
+    pageno,
+  };
+}
+
+export function fetchFeedsFailure(error) {
+  return {
+    type: GET_FEEDS_FAILURE,
+    error,
+  };
+}
+
 export const fetchFeeds = (page) => (dispatch, getState) => {
   const pageno = !isNaN(page) ? Number(page) : 1;
-  dispatch({
-    type: GET_FEEDS_REQUEST,
-  });
+  fetchFeedsRequest();
   return Service.get("/search", { page: pageno - 1 })
     .then((result) => {
-      dispatch({
-        type: GET_FEEDS_SUCCESS,
-        payload: result,
-        pageno,
-      });
+      fetchFeedsSuccess(result, pageno);
     })
     .catch((err) => {
-      dispatch({
-        type: GET_FEEDS_FAILURE,
-        error: err,
-      });
+      fetchFeedsFailure(err);
     });
 };
