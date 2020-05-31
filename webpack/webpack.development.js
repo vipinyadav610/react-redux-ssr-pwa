@@ -1,11 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const merge = require("webpack-merge");
 const Dotenv = require("dotenv-webpack");
-
 const common = require("./webpack.common");
 
 const config = {
@@ -21,35 +19,8 @@ const config = {
     publicPath: "/",
   },
   mode: "development",
-  module: {
-    rules: [
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-              publicPath: "/css",
-            },
-          },
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.(ttf|eot|otf|svg|png|jpe?g|gif)$/i,
-        loader: "file-loader",
-        options: {
-          name: "images/[name].[ext]",
-        },
-      },
-    ],
-  },
   plugins: [
-    new BundleAnalyzerPlugin(),
-    new CleanWebpackPlugin(),
+    // new BundleAnalyzerPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
