@@ -26,28 +26,14 @@ function FeedItem({
 }) {
   return (
     <div className="feed-item-container">
-      <div role="feedlistitem" className="feed-item-element-wrapper">
+      <div className="feed-item-element-wrapper">
         <div className="feed-wrapper-item-large-fonts">
-          <div
-            aria-label="votes"
-            className="feed-wrapper-item feed-item-points label-black"
-          >
+          <div className="feed-wrapper-item feed-item-points label-black">
             {points + votes}
           </div>
-          <div
-            aria-label="comments"
-            className="feed-wrapper-item item-comments"
-          >
-            {num_comments}
-          </div>
-          <div
-            aria-label="upvote icon"
-            className="upvote-icon"
-            onClick={() => handleUpVotes(id)}
-          />
-          <div aria-label="title" className="feed-wrapper-item label-black">
-            {title}
-          </div>
+          <div className="feed-wrapper-item item-comments">{num_comments}</div>
+          <div className="upvote-icon" onClick={() => handleUpVotes(id)} />
+          <div className="feed-wrapper-item label-black">{title}</div>
         </div>
         <div className="feed-item-small-font">
           {url && (
@@ -58,14 +44,11 @@ function FeedItem({
             </div>
           )}
           {author && (
-            <div aria-label="author" className="feed-wrapper-item ">
-              by{" "}
-              <span aria-label="author name" className="label-black">
-                {author}
-              </span>
+            <div className="feed-wrapper-item ">
+              by <span className="label-black">{author}</span>
             </div>
           )}
-          <div aria-label="feed created time" className="feed-wrapper-item">
+          <div className="feed-wrapper-item">
             {moment(created_at).fromNow()}
           </div>
           <div

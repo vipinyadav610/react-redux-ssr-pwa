@@ -18,6 +18,7 @@ require("@babel/register")({
     ],
     "@babel/plugin-transform-async-to-generator",
     "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-optional-chaining",
   ],
   sourceMaps: "inline",
   retainLines: true,

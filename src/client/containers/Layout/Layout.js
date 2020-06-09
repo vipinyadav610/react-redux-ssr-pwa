@@ -13,7 +13,9 @@ function Layout(props) {
         <div className="navigation-item">top</div>
         <div className="navigation-item">new</div>
       </header>
-      <ClientRoutes location={props.location} />
+      <main>
+        <ClientRoutes location={props.location} />
+      </main>
     </div>
   );
 }
