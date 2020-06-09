@@ -20,6 +20,9 @@ const config = {
     filename: "js/[hash].[name].js",
   },
   mode: "production",
+  // externals: {
+  //   "redux-devtools-extension": "redux-devtools-extension",
+  // },
   optimization: {
     runtimeChunk: "single",
     splitChunks: {

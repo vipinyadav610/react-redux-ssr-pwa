@@ -48,7 +48,7 @@ function Feeds(props) {
         <meta name="description" content="Hacker news list page" />
       </Helmet>
       <Spinner loading={props.loading}>
-        <div role="feedlist" aria-label="feed list">
+        <div>
           {props.feeds.map(
             ({
               title,
