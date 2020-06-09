@@ -13,7 +13,6 @@ const common = require("./webpack.common");
 
 const config = {
   entry: {
-    vendor: ["react"],
     index: path.resolve(__dirname, "../src", "client/index.js"),
   },
   output: {
@@ -21,6 +20,25 @@ const config = {
     filename: "js/[hash].[name].js",
   },
   mode: "production",
+  optimization: {
+    runtimeChunk: "single",
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+            return `npm.${packageName.replace("@", "")}`;
+          },
+        },
+      },
+    },
+  },
   plugins: [
     new workboxPlugin.InjectManifest({
       swSrc: path.resolve(__dirname, "../src", "client/sw.js"),
