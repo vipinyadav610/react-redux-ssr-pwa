@@ -22,11 +22,11 @@ const renderApp = () => {
   );
 };
 renderApp();
-// if (module.hot) {
-//   module.hot.accept("./Layout", function () {
-//     renderApp();
-//     // Do something with the updated library module...
-//   });
-// }
+if (module.hot) {
+  module.hot.accept("./containers/Layout/Layout", function () {
+    renderApp();
+    // Do something with the updated library module...
+  });
+}
 
 initialize();
