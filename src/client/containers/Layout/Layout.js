@@ -11,7 +11,7 @@ function Layout(props) {
       <header className="main-header">
         <img className="logo" src={logo} alt="Hacker News" />
         <div className="navigation-item">top</div>
-        <div className="navigation-item">new</div>
+        <div className="navigation-item">new1</div>
       </header>
       <main>
         <ClientRoutes location={props.location} />
