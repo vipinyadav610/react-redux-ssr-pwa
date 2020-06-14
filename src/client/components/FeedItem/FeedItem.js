@@ -28,12 +28,26 @@ function FeedItem({
     <div className="feed-item-container">
       <div className="feed-item-element-wrapper">
         <div className="feed-wrapper-item-large-fonts">
-          <div className="feed-wrapper-item feed-item-points label-black">
+          <div
+            aria-label="votes"
+            className="feed-wrapper-item feed-item-points label-black"
+          >
             {points + votes}
           </div>
-          <div className="feed-wrapper-item item-comments">{num_comments}</div>
-          <div className="upvote-icon" onClick={() => handleUpVotes(id)} />
-          <div className="feed-wrapper-item label-black">{title}</div>
+          <div
+            aria-label="comments"
+            className="feed-wrapper-item item-comments"
+          >
+            {num_comments}
+          </div>
+          <div
+            aria-label="upvote icon"
+            className="upvote-icon"
+            onClick={() => handleUpVotes(id)}
+          />
+          <div aria-label="title" className="feed-wrapper-item label-black">
+            {title}
+          </div>
         </div>
         <div className="feed-item-small-font">
           {url && (
@@ -45,7 +59,10 @@ function FeedItem({
           )}
           {author && (
             <div className="feed-wrapper-item ">
-              by <span className="label-black">{author}</span>
+              by
+              <span aria-label="author name" className="label-black">
+                {author}
+              </span>
             </div>
           )}
           <div className="feed-wrapper-item">

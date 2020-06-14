@@ -1,6 +1,6 @@
 import React from "react";
 import { hydrate } from "react-dom";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import Layout from "./containers/Layout/Layout";
@@ -15,11 +15,11 @@ const renderApp = () => {
   const { store } = configureStore(preloadedState);
 
   hydrate(
-    <Provider store={store}>
+    <ReduxProvider store={store}>
       <BrowserRouter>
         <Layout>{renderRoutes(routes)}</Layout>
       </BrowserRouter>
-    </Provider>,
+    </ReduxProvider>,
     document.getElementById("root")
   );
 };

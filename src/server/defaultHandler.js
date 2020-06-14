@@ -1,7 +1,7 @@
 import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import { matchRoutes, renderRoutes } from "react-router-config";
 import Layout from "../client/containers/Layout/Layout";
@@ -32,14 +32,14 @@ const initialRoutesApi = (location, store) => {
 };
 
 router.get("*", (req, res) => {
-  const { store, history } = configureStore({}, true);
+  const { store } = configureStore({}, true);
   initialRoutesApi(req.url, store).then((data) => {
     const reactApp = renderToString(
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <StaticRouter location={req.url} context={{}}>
           <Layout>{renderRoutes(routes)}</Layout>
         </StaticRouter>
-      </Provider>
+      </ReduxProvider>
     );
     const preloadedState = store.getState();
 
