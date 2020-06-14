@@ -28,12 +28,20 @@ export function fetchFeedsFailure(error) {
 
 export const fetchFeeds = (page) => (dispatch, getState) => {
   const pageno = !isNaN(page) ? Number(page) : 1;
-  dispatch(fetchFeedsRequest());
-  return Service.get("/search", { page: pageno - 1 })
-    .then((result) => {
-      dispatch(fetchFeedsSuccess(result, pageno));
-    })
-    .catch((err) => {
-      dispatch(fetchFeedsFailure(err));
-    });
+  let windowFeeds;
+  if (typeof window !== "undefined") {
+    const state = window.__PRELOADED_STATE__;
+    windowFeeds = state?.feeds?.feeds[pageno] || undefined;
+  }
+
+  if (!getState().feeds.feeds[pageno] || !windowFeeds) {
+    dispatch(fetchFeedsRequest());
+    return Service.get("/search", { page: pageno - 1 })
+      .then((result) => {
+        dispatch(fetchFeedsSuccess(result, pageno));
+      })
+      .catch((err) => {
+        dispatch(fetchFeedsFailure(err));
+      });
+  }
 };

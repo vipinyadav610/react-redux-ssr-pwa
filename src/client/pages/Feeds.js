@@ -40,7 +40,7 @@ function Feeds(props) {
     setItem("votes-feeds", JSON.stringify(hideFeeds));
     setUpVotes(hideFeeds);
   };
-  // const feeds = props.feeds[!isNaN(pageno) ? Number(pageno) : 1] || [];
+  const feeds = props.feeds[!isNaN(pageno) ? Number(pageno) : 1] || [];
   return (
     <div>
       <Helmet>
@@ -49,7 +49,7 @@ function Feeds(props) {
       </Helmet>
       <Spinner loading={props.loading}>
         <div>
-          {props.feeds.map(
+          {feeds.map(
             ({
               title,
               num_comments,
