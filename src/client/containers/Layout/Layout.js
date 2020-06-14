@@ -1,7 +1,4 @@
 import React from "react";
-import { withRouter, Switch } from "react-router-dom";
-import { connect } from "react-redux";
-import ClientRoutes from "../../routes/ClientRoutes";
 import logo from "../../images/y18.gif";
 import "./Layout.scss";
 
@@ -11,13 +8,11 @@ function Layout(props) {
       <header className="main-header">
         <img className="logo" src={logo} alt="Hacker News" />
         <div className="navigation-item">top</div>
-        <div className="navigation-item">new1</div>
+        <div className="navigation-item">new</div>
       </header>
-      <main>
-        <ClientRoutes location={props.location} />
-      </main>
+      <main>{props.children}</main>
     </div>
   );
 }
 
-export default withRouter(connect()(Layout));
+export default Layout;

@@ -1,10 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ManifestPlugin = require("webpack-manifest-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 const Dotenv = require("dotenv-webpack");
 const workboxPlugin = require("workbox-webpack-plugin");
@@ -20,9 +18,6 @@ const config = {
     filename: "js/[hash].[name].js",
   },
   mode: "production",
-  // externals: {
-  //   "redux-devtools-extension": "redux-devtools-extension",
-  // },
   optimization: {
     runtimeChunk: "single",
     splitChunks: {

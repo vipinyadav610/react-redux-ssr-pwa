@@ -1,10 +1,10 @@
 import express from "express";
 import React from "react";
-import qs from "qs";
 import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
-import { ConnectedRouter, push } from "connected-react-router";
+import { StaticRouter } from "react-router-dom";
 import { matchRoutes, renderRoutes } from "react-router-config";
+import Layout from "../client/containers/Layout/Layout";
 import routes from "../client/routes/ServerRoutes";
 import configureStore from "../client/redux/store";
 
@@ -33,13 +33,12 @@ const initialRoutesApi = (location, store) => {
 
 router.get("*", (req, res) => {
   const { store, history } = configureStore({}, true);
-  store.dispatch(push(req.originalUrl));
   initialRoutesApi(req.url, store).then((data) => {
     const reactApp = renderToString(
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          {renderRoutes(routes)}
-        </ConnectedRouter>
+        <StaticRouter location={req.url} context={{}}>
+          <Layout>{renderRoutes(routes)}</Layout>
+        </StaticRouter>
       </Provider>
     );
     const preloadedState = store.getState();
